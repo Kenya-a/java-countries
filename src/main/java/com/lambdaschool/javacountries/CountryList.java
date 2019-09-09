@@ -1,7 +1,6 @@
 package com.lambdaschool.javacountries;
 
 import java.util.ArrayList;
-import java.util.zip.CheckedOutputStream;
 
 public class CountryList
 {
@@ -213,32 +212,32 @@ public class CountryList
         countryList.add(new Country("Seychelles",95702,460,36));
     }
 
-//    public Country findCountry (CheckCountry tester)
-//    {
-//        for (Country c: countryList)
-//        {
-//            if(tester.test(c))
-//            {
-//                return c;
-//            }
-//        }
-//
-//        return null;
-//    }
-//
-//    public ArrayList<Country> findCountry (CheckCountry tester)
-//    {
-//        ArrayList<Country> tempCountryList = new ArrayList<>();
-//
-//        for (Country c: countryList)
-//        {
-//            if(tester.test(c))
-//            {
-//                tempCountryList.add(c);
-//            }
-//        }
-//
-//        return tempCountryList;
-//    }
-//
+    public Country findCountry(CheckCountry tester)
+    {
+        for (Country c: countryList)
+        {
+            if(tester.test(c))
+            {
+                return c;
+            }
+        }
+
+        return null;
+    }
+
+    public ArrayList<Country> findCountries (CheckCountry tester)
+    {
+        ArrayList<Country> tempCountryList = new ArrayList<>();
+
+        for (Country c: countryList)
+        {
+            if(tester.test(c))
+            {
+                tempCountryList.add(c);
+            }
+        }
+
+        return tempCountryList;
+    }
+
 }
