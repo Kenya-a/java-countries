@@ -213,7 +213,7 @@ public class CountryList
         countryList.add(new Country("Seychelles",95702,460,36));
     }
 
-//    public Country findCountry(CheckCountry tester)
+//    public Country findCountry (CheckCountry tester)
 //    {
 //        for (Country c: countryList)
 //        {
@@ -226,7 +226,7 @@ public class CountryList
 //        return null;
 //    }
 //
-//    public ArrayList<Country> findCountry(CheckCountry tester)
+//    public ArrayList<Country> findCountry (CheckCountry tester)
 //    {
 //        ArrayList<Country> tempCountryList = new ArrayList<>();
 //
@@ -240,7 +240,5 @@ public class CountryList
 //
 //        return tempCountryList;
 //    }
-
-
-
+//
 }

@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 @RequestMapping("/data")
 public class CountryController
@@ -16,7 +18,9 @@ public class CountryController
                 produces = {"application/json"})
     public ResponseEntity<?> getAllCountries()
     {
-        return new ResponseEntity<>(JavaCountriesApplication.myCountryList.countryList, HttpStatus.OK);
+        ArrayList<Country> rtnCountry = JavaCountriesApplication.myCountryList.countryList;
+        rtnCountry.sort((c1,c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+        return new ResponseEntity<>(rtnCountry, HttpStatus.OK);
     }
 
     //localhost:2019/data/start/k
