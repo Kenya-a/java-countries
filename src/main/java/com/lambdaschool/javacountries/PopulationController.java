@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class PopulationController
 {
     //localhost:2019/population/size/{num}
-    //return the countries alphabetically that have a name equal to or longer than the given length
+     //return the countries alphabetically that have a name equal to or longer than the given length
 
     @GetMapping(value = "/size/{num}",
                 produces = {"application/json"})
@@ -27,9 +27,19 @@ public class PopulationController
 
     }
 
-    //localhost:2019/population/people
+    //localhost:2019/population/size/{people}
     //return the countries that have a population equal to or greater than the given population
 
+    @GetMapping(value = "/size/{people}",
+            produces = {"application/json"})
+    public ResponseEntity<?> getPopulationSizeOfCountryName(@PathVariable long people)
+    {
+        ArrayList<Country> rtnPopulations = JavaCountriesApplication.myCountryList
+                .findCountries(c -> c.getPopulation() >= people);
+        rtnPopulations.sort((c1, c2) -> c1.getName().compareToIgnoreCase(c2.getName()));
+        return new ResponseEntity<>(rtnPopulations, HttpStatus.OK);
+
+    }
     //localhost:2019/population/min
     //return the country with the smallest population
 
@@ -49,7 +59,6 @@ public class PopulationController
         }
         return country;
     }
-
 
     //localhost:2019/population/max
     //return the country with the largest population
