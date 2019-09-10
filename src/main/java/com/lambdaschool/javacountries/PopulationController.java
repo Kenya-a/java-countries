@@ -54,4 +54,20 @@ public class PopulationController
     //localhost:2019/population/max
     //return the country with the largest population
 
+    @GetMapping(value = "/max",
+            produces = {"application/json"})
+    public Country getLargestPopulation()
+    {
+        long max= 0;
+        Country count = null;
+        for (Country c: JavaCountriesApplication.myCountryList.countryList)
+        {
+            if(c.getPopulation() >max)
+            {
+                max = c.getPopulation();
+                count = c;
+            }
+        }
+        return count;
+    }
 }
