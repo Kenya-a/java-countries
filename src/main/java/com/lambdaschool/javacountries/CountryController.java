@@ -34,5 +34,5 @@ public class CountryController
                 .findCountries(c -> c.getName().toUpperCase().charAt(0) == Character.toUpperCase(letter));
         return new ResponseEntity<>(rtnCountries, HttpStatus.OK);
     }
-    
+
 }

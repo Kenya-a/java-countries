@@ -15,6 +15,7 @@ public class PopulationController
 {
     //localhost:2019/population/size/{num}
     //return the countries alphabetically that have a name equal to or longer than the given length
+
     @GetMapping(value = "/size/{num}",
                 produces = {"application/json"})
     public ResponseEntity<?> getSizeOfCountryName(@PathVariable long num)
@@ -26,13 +27,31 @@ public class PopulationController
 
     }
 
-    //localhost:2019/data/people
+    //localhost:2019/population/people
     //return the countries that have a population equal to or greater than the given population
 
-    //localhost:2019/data/min
+    //localhost:2019/population/min
     //return the country with the smallest population
 
-    //localhost:2019/data/max
+    @GetMapping(value = "/min",
+                produces = {"application/json"})
+    public Country getSmallestPopulation()
+    {
+        long min = 1000000000;
+        Country country = null;
+        for (Country c: JavaCountriesApplication.myCountryList.countryList)
+        {
+            if(c.getPopulation() <= min)
+            {
+                min = c.getPopulation();
+                country = c;
+            }
+        }
+        return country;
+    }
+
+
+    //localhost:2019/population/max
     //return the country with the largest population
 
 }
